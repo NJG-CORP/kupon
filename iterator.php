@@ -128,4 +128,12 @@ for ($i = 0; $i < 10000; $i++) {
 }
 $myTime = microtime_float() - $timeStart;
 
-echo "Time:$myTime, random rows: 10000, from 0 to 10000";
+$Iterator = new SplFileObject("text.txt");
+$timeStart = microtime_float();
+for ($i = 0; $i < 10000; $i++) {
+    $random = rand(0, 10000);
+    $Iterator->seek($random);
+}
+$SplTime = microtime_float() - $timeStart;
+
+echo "MyTime:$myTime,SplTime:$SplTime, random rows: 10000, from 0 to 10000";

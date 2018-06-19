@@ -113,17 +113,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 <!-- /MomentJS CDN-->
 <script>
-    var dateFormat = "DD.MM.YYYY";
+    let dateFormat = "DD.MM.YYYY";
 
     $(".sortable>thead th, .sortable>thead td").on("click", function (event) {
-        var _this = $(this),
+        const _this = $(this),
             index = _this.index(),
             type = _this.data('type'),
             sort = _this.data('sort') === undefined ? true : !_this.data('sort'),
-            sortableArray = [],
             table = _this.parent().//tr
             parent().//thead
             parent();
+
+        let sortableArray = [];
 
         //Убираю старые сортировки
         table.find('thead th, thead td').removeData('sort').removeClass('sort-asc').removeClass('sort-desc');
@@ -142,7 +143,7 @@
 
         //Сортирую массив
         sortableArray.sort(function (a, b) {
-            var first = sort ? a['val'] : b['val'],
+            const first = sort ? a['val'] : b['val'],
                 second = sort ? b['val'] : a['val'];
 
             switch (type) {
